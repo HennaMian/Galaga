@@ -29,6 +29,8 @@ typedef enum {
   LOSE,
 } GBAState;
 
+
+
 // u32 row1[7] = {1,1,1,1,1,1,1};
 // u32 row2[7] = {1,1,1,1,1,1,1};
 

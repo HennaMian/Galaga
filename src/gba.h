@@ -2,27 +2,14 @@
 #ifndef GBA_H
 #define GBA_H
 
-// ---------------------------------------------------------------------------
-//                       USEFUL TYPEDEFS
-// ---------------------------------------------------------------------------
-/** An unsigned 32-bit (4-byte) type */
 typedef unsigned int u32;
-
-/** An unsigned 16-bit (2-byte) type */
 typedef unsigned short u16;
-
-/** An unsigned 8-bit (1-byte) type. Note that this type cannot be written onto RAM directly. */
 typedef unsigned char u8;
 
-// ---------------------------------------------------------------------------
-//                       MODE3 MACROS
-// ---------------------------------------------------------------------------
 #define OFFSET(row, col, width) ((col)+(width)*(row))
-
 #define REG_DISPCNT  *(volatile unsigned short *) 0x4000000
 #define MODE3 3
 #define BG2_ENABLE (1<<10)
-
 #define COLOR(r, g, b) ((r) | (g)<<5 | (b)<<10)
 #define WHITE COLOR(31,31,31)
 #define RED COLOR(31,0,0)
@@ -57,11 +44,6 @@ extern volatile unsigned short *videoBuffer;
 
 #define BUTTONS *(volatile u32 *) 0x4000130
 #define KEY_DOWN(key, buttons) (~(buttons) & (key))
-
-// TODO: COMPLETE THIS MACRO.
-// Remember that a button is recently pressed if it wasn't pressed in the last
-// input (oldButtons) but is pressed in the current input. Use the KEY_DOWN
-// macro to check if the button was pressed in the inputs.
 #define KEY_JUST_PRESSED(key, buttons, oldbuttons) (~(KEY_DOWN(key, oldbuttons)) & (KEY_DOWN(key, buttons)))
 
 // ---------------------------------------------------------------------------
@@ -109,7 +91,7 @@ typedef struct
 // ---------------------------------------------------------------------------
 #define SCANLINECOUNTER *(volatile unsigned short *)0x4000006
 
-// Use this variable to count vBlanks. Initialized in gba.c and to be
+// This variable counts vBlanks. Initialized in gba.c and to be
 // manipulated by waitForVBlank()
 extern u32 vBlankCounter;
 

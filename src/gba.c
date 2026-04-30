@@ -5,21 +5,10 @@ volatile unsigned short *videoBuffer = (volatile unsigned short *)0x6000000;
 u32 vBlankCounter = 0;
 
 void waitForVBlank(void) {
-  // TODO: IMPLEMENT
-
-  // (1)
-  // Write a while loop that loops until we're NOT in vBlank anymore:
-  // (This prevents counting one VBlank more than once if your app is too fast)
 
   while (SCANLINECOUNTER > 160);
 
-  // (2)
-  // Write a while loop that keeps going until we're in vBlank:
-
   while (SCANLINECOUNTER < 160);
-
-  // (3)
-  // Finally, increment the vBlank counter:
 
   vBlankCounter++;
 }
@@ -33,12 +22,10 @@ static int qran(void) {
 int randint(int min, int max) { return (qran() * (max - min) >> 15) + min; }
 
 void setPixel(int row, int col, u16 color) {
-  // TODO: IMPLEMENT
   videoBuffer[OFFSET(row, col, 240)] = color;
 }
 
 void drawRectDMA(int row, int col, int width, int height, volatile u16 color) {
-  // TODO: IMPLEMENT
   for (int r = 0; r < height; r++) {
     DMA[3].src = &color;
     DMA[3].dst = &videoBuffer[OFFSET(row + r, col, 240)];
@@ -47,7 +34,6 @@ void drawRectDMA(int row, int col, int width, int height, volatile u16 color) {
 }
 
 void drawFullScreenImageDMA(const u16 *image) {
-  // TODO: IMPLEMENT
   DMA[3].src = image;
   DMA[3].dst = videoBuffer;
   DMA[3].cnt = (HEIGHT * WIDTH) | DMA_ON | DMA_SOURCE_INCREMENT | DMA_DESTINATION_INCREMENT;
@@ -55,7 +41,6 @@ void drawFullScreenImageDMA(const u16 *image) {
 }
 
 void drawImageDMA(int row, int col, int width, int height, const u16 *image) {
-  // TODO: IMPLEMENT
   for (int r = 0; r < height; r++) {
     DMA[3].src = &image[width * r];
     DMA[3].dst = &videoBuffer[OFFSET(row + r, col, 240)];
@@ -64,7 +49,6 @@ void drawImageDMA(int row, int col, int width, int height, const u16 *image) {
 }
 
 void fillScreenDMA(volatile u16 color) {
-  // TODO: IMPLEMENT
   DMA[3].src = &color;
   DMA[3].dst = videoBuffer;
   DMA[3].cnt = (HEIGHT * WIDTH) | DMA_ON | DMA_SOURCE_FIXED | DMA_DESTINATION_INCREMENT;

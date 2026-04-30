@@ -1,26 +1,5 @@
-################################################################################
-# These are variables for the GBA toolchain build
-# You can add others if you wish to
-# ***** YOUR NAME HERE *****
-################################################################################
-
-# TA-TODO: Put your game name here.
-# The name of your desired application
-# This should be a just a name i.e MyFirstGBAGame
-# No SPACES AFTER THE NAME.
 PROGNAME = Galaga
-
-# TA-TODO: Add the C files you want compiled here (replace extension with .o)
-# Here you must put a list of all of the object files
-# that will be compiled into your program. For example
-# if you have main.c and myLib.c then in the following
-# line you would put main.o and myLib.o
 OFILES = gba.o font.o game.o images/missileAway.o images/rocket.o images/enemy.o images/win.o images/galaga.o images/stars.o images/gameOver.o images/lifeRocket.o images/missileTo.o
-
-################################################################################
-# These are various settings used to make the GBA toolchain work
-# DO NOT EDIT BELOW.
-################################################################################
 
 .PHONY: all
 all : CFLAGS += $(CRELEASE) -I../shared
@@ -30,7 +9,6 @@ all: $(PROGNAME).gba
 
 include /opt/cs2110-tools/GBAVariables.mak
 
-# Son, it's time to be an adult and use adult prototypes
 CFLAGS += -Wstrict-prototypes -Wold-style-definition
 
 debug : CFLAGS += $(CDEBUG) -I../shared
@@ -62,7 +40,6 @@ med : LDFLAGS += $(LDRELEASE)
 med : $(PROGNAME).gba
 	@echo "[EXECUTE] Running emulator Mednafen"
 	@echo "          Please see emulator.log if this fails"
-# Default mednafen keybinds are "Gaaarbage", in the words of Farzam
 	@mkdir -p ~/.mednafen/
 	@cp mednafen-09x.cfg ~/.mednafen/
 	@mednafen $(MEDOPT) $(PROGNAME).gba >emulator.log 2>&1
