@@ -92,18 +92,13 @@ src/
     └── ...
 ```
 
-## What I Learned
-
-This project taught me valuable skills in:
+## Demonstrates proficiency in:
+- **Systems-level C programming**: Practical application of computer architecture concepts
 - **Embedded Systems Programming**: Working directly with hardware constraints and memory-mapped I/O
 - **Real-Time Systems**: Managing frame-locked game loops with VBlank synchronization
 - **Game Development**: State machines, collision detection, sprite management
 - **Performance Optimization**: DMA transfers, efficient memory access patterns
 - **Low-Level C**: Manual memory management, hardware registers, bitwise operations
-
-## Course Context
-
-Created as a final project for **CS 2110: Computer Organization and Programming** at Georgia Tech. Demonstrates proficiency in systems-level C programming and practical application of computer architecture concepts.
 
 ---
 
