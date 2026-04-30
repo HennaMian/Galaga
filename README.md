@@ -2,6 +2,10 @@
 
 A fully functional arcade-style space shooter game developed in C for the Game Boy Advance (GBA) platform. This project demonstrates low-level hardware programming, game state management, and real-time graphics rendering on embedded systems.
 
+## Demo
+
+[![Galaga Gameplay Demo](https://img.shields.io/badge/Watch%20Demo-Loom-5c2d91)](https://www.loom.com/share/4d28218138ed4c1bb9d532ed59ab9678)
+
 ## Features
 
 - **Player-Controlled Rocket**: Smooth movement in all directions with pixel-perfect collision detection
